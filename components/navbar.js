@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import Route from 'next/router';
-import {Container, Form,Button, Navbar, Nav, NavItem, NavDropdown} from 'react-bootstrap'
+import {Container, Form,Button, Navbar, Nav, NavItem, NavDropdown} from 'react-bootstrap';
+import Search from './search';
 
 class MyNavbar extends Component {
     constructor(props){
         super(props)
         this.state = {
-            
+          showMobile: true
         }
+        this.toggleMobile = this.toggleMobile.bind(this)
     }
 
     Logout = () => {
         
 
+    }
+    toggleMobile = function() {
+      this.setState({ showMobile: !this.state.showMobile });
     }
 
     componentDidMount = () => {
@@ -23,7 +28,6 @@ class MyNavbar extends Component {
         return (
         <>
             <header className="app-header app-header-dark">
-      
             <div className="top-bar">
         
             <div className="top-bar-brand">
@@ -31,9 +35,31 @@ class MyNavbar extends Component {
             <button onClick={this.props.toggleMenu} className="hamburger hamburger-squeeze mr-2" type="button" data-toggle="aside-menu" aria-label="toggle aside menu"><span className="hamburger-box"><span className="hamburger-inner"></span></span></button> 
             </div>
 
+            <div className="top-bar-list">
+            <div className="top-bar-item d-md-none d-lg-none d-xl-none">
+            <Button onClick={this.toggleMobile} className="hamburger hamburger-squeeze float-left" type="button" data-toggle="aside" aria-label="toggle menu"><span className="hamburger-box"><span className="hamburger-inner"></span></span></Button>
             </div>
+            <div className="top-bar-item top-bar-item-full">
+              <Search/>
+            </div>
+            </div>
+
+
+            </div>
+
             </header>
-            <aside className="app-aside app-aside-expand-md app-aside-light">
+
+            <aside className={this.state.showMobile ? 'app-aside' : 'app-aside app-aside-expand-md app-aside-light show' }>
+            {this.state.showMobile ?     
+            <></>
+            :
+            <>
+            <Button onClick={this.toggleMobile} type="button" className="btn btn-secondary float-right">
+                X
+            </Button>
+            
+            </>
+            }
       
             <div className="aside-content">
          
