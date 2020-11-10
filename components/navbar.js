@@ -49,7 +49,7 @@ class MyNavbar extends Component {
 
             </header>
 
-            <aside className={this.state.showMobile ? 'app-aside' : 'app-aside app-aside-expand-md app-aside-light show' }>
+            <aside className={this.state.showMobile ? 'app-aside app-aside-expand-md app-aside-light' : 'app-aside app-aside-expand-md app-aside-light show' }>
             {this.state.showMobile ?     
             <></>
             :
