@@ -1,0 +1,8 @@
+.stacked-menu .menu-item > .menu-link.active {
+    background-color: transparent;
+    color: #346CB0;
+}
+
+.stacked-menu .menu-item > .menu-link.active .menu-icon {
+    color: #346CB0;
+  }

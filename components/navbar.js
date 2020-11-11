@@ -1,8 +1,40 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import Route from 'next/router';
-import {Container, Form,Button, Navbar, Nav, NavItem, NavDropdown} from 'react-bootstrap';
+import Link from './link';
+import {Container, Collapse, Form, Button, Navbar, Nav, NavItem, NavDropdown} from 'react-bootstrap';
 import Search from './search';
+import { MdDashboard, MdList } from "react-icons/md";
 
+function SubMenu() {
+  const [open1, setOpen1] = useState(false);
+  const toggleHover = () => setOpen1(!open1);
+  return (
+  <li className={open1 ? "menu-item has-child has-open":"menu-item has-child"}>
+        
+        <a href={'#'} onClick={() => setOpen1(!open1)} data-toggle="collapse" aria-controls="collapseKonten" aria-expanded={open1} className="menu-link">
+        <span className="menu-icon"><MdList size="1.6rem"/></span> <span className="menu-text">Master</span>
+            </a>
+       
+        <Collapse in={open1} id="collapseKonten">
+       
+                  <ul className="menu">
+                    <li className="menu-item">
+                      <a href="user-profile.html" className="menu-link">Barang</a>
+                    </li>
+                    <li className="menu-item">
+                      <a href="user-activities.html" className="menu-link">Kategori</a>
+                    </li>
+                    <li className="menu-item">
+                      <a href="user-teams.html" className="menu-link">User</a>
+                    </li>
+                  
+                    
+                  </ul>
+                
+        </Collapse>
+      </li>
+  );
+}
 class MyNavbar extends Component {
     constructor(props){
         super(props)
@@ -24,7 +56,7 @@ class MyNavbar extends Component {
      
     }
     render() {
-        
+      
         return (
         <>
             <header className="app-header app-header-dark">
@@ -77,15 +109,18 @@ class MyNavbar extends Component {
               </div>
             </div>
             </header>
-            <div className="aside-menu overflow-hidden">
+            <div className="aside-menu overflow-hidden ps">
 
-            <nav id="stacked-menu" className="stacked-menu">
+            <nav id="stacked-menu" className={this.props.showMenu ? 'stacked-menu stacked-menu-has-collapsible' : 'stacked-menu stacked-menu-has-compact stacked-menu-has-hoverable' } >
              
               <ul className="menu">
            
-                <li className="menu-item has-active">
-                  <a href="index.html" className="menu-link"><span className="menu-icon fas fa-home"></span> <span className="menu-text">Dashboard</span></a>
+                <li className="menu-item">
+                  <Link href="/dashboard" activeClassName="active" passHref>
+                  <a className="menu-link"><span className="menu-icon"><MdDashboard size="1.6rem"/></span> <span className="menu-text">Dashboard</span></a>
+                  </Link>
                 </li>
+                <SubMenu/>
                 </ul>
                 </nav>
             </div>

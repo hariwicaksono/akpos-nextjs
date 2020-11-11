@@ -107,10 +107,16 @@ const POSTPESAN = (path,data) =>{
 
 const PostLogin = (data) => LOGIN('login',data)
 const HitungBarang = () => GET('HitungBarang');
+const HitungStok = () => GET('HitungStok');
+const HitungJual = () => GET('HitungJual');
+const HitungKtg = () => GET('HitungKtg');
 
 const API = {
     PostLogin,
-    HitungBarang
+    HitungBarang,
+    HitungStok,
+    HitungJual,
+    HitungKtg
 }
 
 export default API

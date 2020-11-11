@@ -34,7 +34,7 @@ class Layout extends Component {
     <div className={this.state.showMenu ? 'app' : 'app has-compact-menu' } >
       
     {!home ? 
-    <Navbar toggleMenu={this.toggleMenu} />
+    <Navbar toggleMenu={this.toggleMenu} showMenu={this.state.showMenu} />
     :
     <></>
     }
